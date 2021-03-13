@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_zoo"
+    app:startDestination="@id/fragment_splash">
+
+    <fragment
+        android:id="@+id/fragment_splash"
+        android:label="@string/splash"
+        android:name="com.ddt.zoo.ui.splash.SplashFragment"
+        tools:layout="@layout/fragment_splash">
+
+        <action
+            android:id="@+id/action_splash_fragment_to_home_fragment"
+            app:destination="@id/fragment_home"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_home"
+        android:name="com.ddt.zoo.ui.home.HomeFragment"
+        android:label="@string/taipei_zoo"
+        tools:layout="@layout/fragment_home_list">
+
+        <action
+            android:id="@+id/action_home_fragment_to_zone_fragment"
+            app:destination="@id/zone_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/zone_fragment"
+        android:name="com.ddt.zoo.ui.zone.ZoneFragment"
+        tools:layout="@layout/fragment_zone">
+
+        <action
+            android:id="@+id/action_zone_fragment_to_plant_fragment"
+            app:destination="@id/plant_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="KEY_ITEM"
+            app:argType="com.ddt.zoo.model.ZoneItem" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/plant_fragment"
+        android:name="com.ddt.zoo.ui.plant.PlantFragment"
+        android:label="@string/plants_detail"
+        tools:layout="@layout/fragment_plant">
+        <argument
+            android:name="KEY_ITEM"
+            app:argType="com.ddt.zoo.model.PlantItem" />
+    </fragment>
+
+</navigation>

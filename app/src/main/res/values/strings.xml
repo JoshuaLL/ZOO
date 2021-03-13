@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">DDT ZOO</string>
+    <string name="menu_item_share">Share</string>
+    <string name="splash">splash</string>
+    <string name="taipei_zoo">臺北市立動物園</string>
+    <string name="open_url">在網頁開啟</string>
+    <string name="plants_detail">植物資料</string>
+    <string name="plant_alias_name">別名</string>
+    <string name="brief">簡介</string>
+    <string name="recognition_methods">辨認方式</string>
+    <string name="function">功能性</string>
+    <string name="last_update_time">最後更新：</string>
+    <string name="data_empty">尚未有資料</string>
+    <string name="retry">請重新刷新</string>
+</resources>

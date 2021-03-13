@@ -1,0 +1,27 @@
+<resources>
+    
+    <style name="Base.Theme.zoo" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/zoo_green_900</item>
+        <item name="colorOnPrimary">@color/zoo_yellow_300</item>
+        <item name="colorPrimaryDark">@color/zoo_gray_50_a600</item>
+        <item name="colorOnSurface">@color/zoo_white</item>
+        <item name="colorAccent">@color/zoo_green_300</item>
+        <item name="colorSurface">@color/zoo_green_900</item>
+        <item name="colorSecondary">@color/zoo_yellow_300</item>
+        <item name="android:colorBackground">@color/zoo_green_900</item>
+    </style>
+
+    <style name="Theme.Zoo" parent="Base.Theme.zoo"/>
+
+    <style name="Theme.Zoo.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.zoo.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar"/>
+
+    <style name="TextAppearance.zoo.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5" >
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+</resources>
