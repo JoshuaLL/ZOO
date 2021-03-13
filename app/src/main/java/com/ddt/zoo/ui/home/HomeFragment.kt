@@ -8,8 +8,11 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.ddt.zoo.R
 import com.ddt.zoo.api.ApiResult
+import com.ddt.zoo.ui.home.HomeAdapter.Companion.LIST_MODE_NORMAL
+import com.ddt.zoo.ui.home.HomeAdapter.Companion.LIST_MODE_SMALL
 import kotlinx.android.synthetic.main.fragment_home_list.*
 import timber.log.Timber
 
@@ -26,7 +29,15 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        HomeAdapter().let {
+
+        val homeAdapter = HomeAdapter().also {
+            val layoutManager= GridLayoutManager(activity, 2)
+            layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return it.listMode
+                }
+            }
+            zone_list.layoutManager = layoutManager
             zone_list.adapter =it
             subscribeUi(it)
         }
@@ -37,6 +48,26 @@ class HomeFragment : Fragment() {
                     requireActivity().finish()
                 }
         )
+
+        toolbar.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.option_list_mode ->{
+                    if(homeAdapter.listMode == LIST_MODE_NORMAL){
+                        homeAdapter.listMode = LIST_MODE_SMALL
+                        it.setIcon(R.drawable.btn_nav_listmode_small_normal)
+                    }else{
+                        homeAdapter.listMode = LIST_MODE_NORMAL
+                        it.setIcon(R.drawable.btn_nav_listmode_hr_normal)
+                    }
+                    homeAdapter.notifyDataSetChanged()
+                }
+
+                R.id.action_settings->{
+
+                }
+            }
+            true
+        }
         viewModel.getZones()
     }
 

@@ -16,32 +16,69 @@ import com.bumptech.glide.request.RequestOptions
 import com.ddt.zoo.R
 import com.ddt.zoo.model.ZoneItem
 import kotlinx.android.synthetic.main.item_zone.view.*
+import kotlinx.android.synthetic.main.item_zone.view.iv_category
+import kotlinx.android.synthetic.main.item_zone.view.layout_item_category
+import kotlinx.android.synthetic.main.item_zone_small.view.*
 
 class HomeAdapter : ListAdapter<ZoneItem, RecyclerView.ViewHolder>(ZoneDiffCallback()) {
 
+    companion object{
+        const val LIST_MODE_NORMAL = 1
+        const val LIST_MODE_SMALL = 2
+    }
+    var listMode = LIST_MODE_SMALL
+
+    override fun getItemViewType(position: Int): Int {
+        return listMode
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val mView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_zone, parent, false)
-        return HomeViewHolder(mView)
+        return when (viewType) {
+            LIST_MODE_SMALL -> HomeViewHolder( LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_zone, parent, false))
+
+            else -> HomeViewSmallHolder(LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_zone_small, parent, false))
+        }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        holder as HomeViewHolder
-
         val item = getItem(position)
 
-        Glide.with(holder.categoryImg.context)
-            .load(item.ePicUrl)
-            .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
-            .placeholder(R.mipmap.ic_launcher)
-            .error(R.mipmap.ic_launcher)
-            .into(holder.categoryImg)
+        when (holder) {
+            is HomeViewHolder ->{
+                Glide.with(holder.categoryImg.context)
+                    .load(item.ePicUrl)
+                    .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
+                    .placeholder(R.mipmap.ic_launcher)
+                    .error(R.mipmap.ic_launcher)
+                    .into(holder.categoryImg)
 
-        holder.categoryTitle.text = item.eName
-        holder.categoryDesc.text = item.eInfo
-        holder.categoryMemo.text = item.eMemo
-        holder.categoryLayout.setOnClickListener {
-            holder.navigateToZone(item)
+                holder.categoryDesc.text = item.eInfo
+                holder.categoryMemo.text = item.eMemo
+
+                holder.categoryTitle.text = item.eName
+                holder.categoryLayout.setOnClickListener {
+                    holder.itemView.findNavController().navigate(
+                        HomeFragmentDirections.actionHomeFragmentToZoneFragment(item)
+                    )
+                }
+            }
+            is HomeViewSmallHolder->{
+                Glide.with(holder.categoryImg.context)
+                    .load(item.ePicUrl)
+                    .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
+                    .placeholder(R.mipmap.ic_launcher)
+                    .error(R.mipmap.ic_launcher)
+                    .into(holder.categoryImg)
+
+                holder.categoryTitle.text = item.eName
+                holder.categoryLayout.setOnClickListener {
+                    holder.itemView.findNavController().navigate(
+                        HomeFragmentDirections.actionHomeFragmentToZoneFragment(item)
+                    )
+                }
+            }
         }
     }
 
@@ -51,17 +88,12 @@ class HomeAdapter : ListAdapter<ZoneItem, RecyclerView.ViewHolder>(ZoneDiffCallb
         var categoryDesc: TextView = itemView.tv_category_desc
         var categoryMemo: TextView = itemView.tv_category_memo
         var categoryLayout: ConstraintLayout = itemView.layout_item_category
+    }
 
-
-        fun navigateToZone(
-            zoneItem: ZoneItem
-        ) {
-            val direction =
-                HomeFragmentDirections.actionHomeFragmentToZoneFragment(
-                    zoneItem
-                )
-            itemView.findNavController().navigate(direction)
-        }
+    class HomeViewSmallHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var categoryImg: ImageView = itemView.iv_category
+        var categoryTitle: TextView = itemView.category_title
+        var categoryLayout: ConstraintLayout = itemView.layout_item_category
     }
 
     fun isEmpty(): Boolean {

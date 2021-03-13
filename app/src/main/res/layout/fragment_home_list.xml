@@ -11,6 +11,8 @@
         android:layout_height="wrap_content"
         app:titleTextColor="@color/black"
         android:elevation="2dp"
+        android:background="?colorPrimary"
+        app:menu="@menu/menu_plant_detail"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -19,7 +21,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:text="@string/taipei_zoo"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
     </androidx.appcompat.widget.Toolbar>
@@ -37,7 +39,7 @@
             android:id="@+id/zone_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             tool:listitem="@layout/item_zone" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -52,6 +54,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_toolbar" />
+        app:layout_constraintTop_toTopOf="@+id/layout_refresh" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

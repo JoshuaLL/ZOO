@@ -10,6 +10,6 @@
     <string name="recognition_methods">辨認方式</string>
     <string name="function">功能性</string>
     <string name="last_update_time">最後更新：</string>
-    <string name="data_empty">尚未有資料</string>
+    <string name="data_empty">資料讀取中...</string>
     <string name="retry">請重新刷新</string>
 </resources>

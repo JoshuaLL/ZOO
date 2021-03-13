@@ -7,11 +7,11 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_home_end"
+        android:id="@+id/end_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.92" />
 
     <ImageView
         android:id="@+id/iv_category"
@@ -45,10 +45,9 @@
         android:maxLines="2"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_category_memo"
-        app:layout_constraintEnd_toEndOf="@+id/gl_home_end"
+        app:layout_constraintEnd_toEndOf="@+id/end_line"
         app:layout_constraintStart_toStartOf="@+id/tv_category_title"
-        app:layout_constraintTop_toTopOf="@+id/tv_category_title"
-        tool:text="臺灣動物區以臺灣原生動物與棲息環境為展示重點，佈置模擬動物原生棲地之生態環境，讓動物表現如野外般自然的生活習性，引導觀賞者更正確地認識本土野生動物。臺灣位處於亞熱帶，雨量充沛、氣候溫暖，擁有各種地形景觀，因而孕育了豐富龐雜的生物資源。" />
+        app:layout_constraintTop_toTopOf="@+id/tv_category_title" />
 
     <TextView
         android:id="@+id/tv_category_memo"
@@ -59,10 +58,9 @@
         android:maxLines="1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_category"
-        app:layout_constraintEnd_toEndOf="@+id/gl_home_end"
+        app:layout_constraintEnd_toEndOf="@+id/end_line"
         app:layout_constraintStart_toStartOf="@+id/tv_category_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_category_desc"
-        tool:text="每週一休館，入館門票：全票20元、優待票10元" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_desc" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -70,7 +68,7 @@
         android:layout_marginStart="4dp"
         android:src="@drawable/ic_chevron_right"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/gl_home_end"
+        app:layout_constraintStart_toStartOf="@+id/end_line"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
