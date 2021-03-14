@@ -5,7 +5,7 @@
     android:id="@+id/layout_item_plant"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="?colorSurface">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_plant_end"
@@ -33,7 +33,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/iv_plant"
         app:layout_constraintTop_toTopOf="@+id/iv_plant"/>

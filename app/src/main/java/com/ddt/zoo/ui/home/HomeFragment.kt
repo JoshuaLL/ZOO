@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.VideoView
 import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -13,7 +14,9 @@ import com.ddt.zoo.R
 import com.ddt.zoo.api.ApiResult
 import com.ddt.zoo.ui.home.HomeAdapter.Companion.LIST_MODE_NORMAL
 import com.ddt.zoo.ui.home.HomeAdapter.Companion.LIST_MODE_SMALL
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home_list.*
+import kotlinx.android.synthetic.main.fragment_home_list.toolbar
 import timber.log.Timber
 
 class HomeFragment : Fragment() {
@@ -29,7 +32,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        requireActivity().toolbar.visibility = VideoView.GONE
+        
         val homeAdapter = HomeAdapter().also {
             val layoutManager= GridLayoutManager(activity, 2)
             layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
@@ -63,7 +67,7 @@ class HomeFragment : Fragment() {
                 }
 
                 R.id.action_settings->{
-
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSettingsFragment())
                 }
             }
             true
