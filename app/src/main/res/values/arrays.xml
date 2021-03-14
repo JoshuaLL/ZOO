@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sort_order">
+        <item>Default</item>
+        <item>Name</item>
+        <item>Time</item>
+    </string-array>
+
+    <string-array name="sort_order_value">
+        <item>default</item>
+        <item>name</item>
+        <item>time</item>
+    </string-array>
+
+    <string-array name="night_mode">
+        <item>MODE_NIGHT_NO</item>
+        <item>MODE_NIGHT_YES</item>
+        <item>MODE_NIGHT_AUTO</item>
+    </string-array>
+
+    <string-array name="night_mode_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>
